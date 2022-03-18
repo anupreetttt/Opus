@@ -15,7 +15,7 @@
         android:fontFamily="cursive"
         android:text="Welcome to Opus"
         android:textAlignment="center"
-        android:textColor="#fc3c44"
+        android:textColor="#000000"
         android:textSize="40dp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
