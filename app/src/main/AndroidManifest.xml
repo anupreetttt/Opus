@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Opus"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".InitialPage"
+            android:exported="true" />
+        <activity
             android:name=".SignupPage"
             android:exported="true" />
         <activity
@@ -23,7 +26,7 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".InitialPage"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
