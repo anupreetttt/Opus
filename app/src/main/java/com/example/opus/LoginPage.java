@@ -10,11 +10,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginPage extends AppCompatActivity {
-    EditText email;
-    EditText loginpass;
-    TextView signupLink;
-    Button loginButton;
+    private EditText email;
+    private EditText password;
+    private TextView signupLink;
+    private Button loginButton;
+
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +28,15 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
         signupLink = findViewById(R.id.signupLink);
         loginButton = findViewById(R.id.loginButton);
-        loginpass = findViewById(R.id.loginpass);
+        password = findViewById(R.id.password);
         email = findViewById(R.id.email);
+
+        auth = FirebaseAuth.getInstance();
 
         signupLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginPage.this, signup.class);
+                Intent intent = new Intent(LoginPage.this, SignupPage.class);
                 startActivity(intent);
             }
         });
@@ -36,13 +44,23 @@ public class LoginPage extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginPage.this, "Logged in", Toast.LENGTH_SHORT).show();
-                openMainActivity();
+                String getEmail = email.getText().toString();
+                String getPassword = password.getText().toString();
+                loginUser(getEmail, getPassword);
             }
         });
     }
-    public void openMainActivity(){
-        Intent intent = new Intent(LoginPage.this,MainActivity.class);
-        startActivity(intent);
+
+    private void loginUser(String email, String password) {
+
+        auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(LoginPage.this, "Logged in", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginPage.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

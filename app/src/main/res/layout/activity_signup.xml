@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible"
-    tools:context=".signup">
+    tools:context=".SignupPage">
 
     <ImageView
         android:id="@+id/imageView"
@@ -46,7 +46,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingEnd="24dp"
         android:textAlignment="textStart"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingEnd="24dp"
         android:textAlignment="textStart"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,15 +84,15 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingEnd="24dp"
         android:textAlignment="textStart"
-        app:layout_constraintBottom_toTopOf="@+id/loginpass"
+        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/loginpass"
+        android:id="@+id/password"
         android:layout_width="315dp"
         android:layout_height="48dp"
         android:layout_marginBottom="260dp"
@@ -103,7 +103,7 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingEnd="24dp"
         android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,23 +112,24 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="136dp"
-        android:layout_height="48dp"
+        android:layout_width="257dp"
+        android:layout_height="38dp"
         android:background="@drawable/custom_login_button"
+        android:fontFamily="@font/archivo_black"
         android:text="Sign Up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginpass"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.117" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:fontFamily="cursive"
+        android:fontFamily="@font/archivo_black"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="Create your Opus account:-"
         android:textColor="#000000"

@@ -3,6 +3,7 @@ package com.example.opus;
 // Media =  audio  + video + imagees
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.example.opus.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 
@@ -19,15 +21,18 @@ public class MainActivity extends AppCompatActivity {
     private Button pause;
     private SeekBar seekBar;
     private MediaPlayer mediaPlayer;
+    private  Button logout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // use media player class
         play = findViewById(R.id.play);
         pause = findViewById(R.id.pause);
         seekBar = findViewById(R.id.seekBar);
+        logout = findViewById(R.id.logout);
+
         /* Media player using local source */
 //        MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.blankspace);
 
@@ -52,15 +57,11 @@ public class MainActivity extends AppCompatActivity {
                             mediaPlayer.seekTo(i);
                         }
                     }
-
                     @Override
                     public void onStartTrackingTouch(SeekBar seekBar) {
-
                     }
-
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-
                     }
                 });
             }
@@ -80,6 +81,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Song paused", Toast.LENGTH_SHORT).show();
                 mediaPlayer.pause();
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(MainActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, LoginPage.class);
+                startActivity(intent);
             }
         });
     }
