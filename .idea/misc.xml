@@ -17,12 +17,14 @@
         <entry key="app/src/main/res/drawable/name_custom_ic.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/name_ic.xml" value="0.226" />
         <entry key="app/src/main/res/drawable/namefocused_ic.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/pause_ic.xml" value="0.221" />
         <entry key="app/src/main/res/drawable/people_custom_ic.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/people_ic.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/peoplefocused_ic.xml" value="0.2135" />
         <entry key="app/src/main/res/layout/activity_initial_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login_page.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_player.xml" value="0.28072916666666664" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2947916666666667" />
       </map>
