@@ -28,12 +28,12 @@ public class PlayerActivity extends AppCompatActivity {
         updateSeek.interrupt();
     }
 
-    TextView textView;
-    Button logout;
+    TextView musicName;
+    TextView logout;
     ImageView play, previous, next;
     ArrayList<File> songs;
     MediaPlayer mediaPlayer;
-    String textContent;
+    String songName;
     int position;
     SeekBar seekBar;
     Thread updateSeek;
@@ -42,7 +42,7 @@ public class PlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
-        textView = findViewById(R.id.textView);
+        musicName = findViewById(R.id.musicName);
         play = findViewById(R.id.play);
         previous = findViewById(R.id.previous);
         next = findViewById(R.id.next);
@@ -56,15 +56,16 @@ public class PlayerActivity extends AppCompatActivity {
                 Toast.makeText(PlayerActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PlayerActivity.this, LoginPage.class);
                 startActivity(intent);
+                mediaPlayer.stop();
             }
         });
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         songs = (ArrayList) bundle.getParcelableArrayList("songList");
-        textContent = intent.getStringExtra("currentSong");
-        textView.setText(textContent);
-        textView.setSelected(true);
+        songName = intent.getStringExtra("currentSong");
+        musicName.setText(songName);
+        musicName.setSelected(true);
         position = intent.getIntExtra("position", 0);
         Uri uri = Uri.parse(songs.get(position).toString());
         mediaPlayer = MediaPlayer.create(this, uri);
@@ -138,8 +139,8 @@ public class PlayerActivity extends AppCompatActivity {
                 mediaPlayer.start();
                 play.setImageResource(R.drawable.pause_ic);
                 seekBar.setMax(mediaPlayer.getDuration());
-                textContent = songs.get(position).getName().toString();
-                textView.setText(textContent);
+                songName = songs.get(position).getName().toString();
+                musicName.setText(songName);
             }
         });
 
@@ -159,8 +160,8 @@ public class PlayerActivity extends AppCompatActivity {
                 mediaPlayer.start();
                 play.setImageResource(R.drawable.pause_ic);
                 seekBar.setMax(mediaPlayer.getDuration());
-                textContent = songs.get(position).getName().toString();
-                textView.setText(textContent);
+                songName = songs.get(position).getName().toString();
+                musicName.setText(songName);
             }
         });
     }
