@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,12 +42,19 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String getEmail = email.getText().toString();
                 String getPassword = password.getText().toString();
-                loginUser(getEmail, getPassword);
+                if (TextUtils.isEmpty(getEmail )|| TextUtils.isEmpty(getPassword)) {
+                    Toast.makeText(LoginPage.this, "Empty credentials", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    loginUser(getEmail, getPassword);
+                }
+
             }
         });
     }
